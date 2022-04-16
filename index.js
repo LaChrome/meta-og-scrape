@@ -1,6 +1,7 @@
 var request = require('request'),
     cheerio = require('cheerio'),
     fields = require('./lib/fields'),
+    linkFields = require('./lib/linkFields'),
     utils = require('./lib/utils');
 
 var Item = function () {};
@@ -16,13 +17,15 @@ var getOpenGraph = function(options, callback) {
         if(!err && response.statusCode === 200) {
             var $ = cheerio.load(body),
                 title = $('head title'),
-                meta = $('head').find('meta[property*="og:"], meta[property*="fb:"], meta[property*="twitter:"]'),
+                meta = $('head').find('meta[property*="og:"], meta[property*="fb:"], meta[property*="twitter:"], meta[property*="al:"], meta[name*="twitter:"]'),
+                links = $('head').find('link[rel*="alternate"]'),
                 openGraph = {};
 
             meta.each(function(idx) {
                 var key = $(this).attr('property');
+                var nameKey = $(this).attr('name');
                 var value = $(this).attr('content');
-                var data = fields[key];
+                var data = fields[key] ?? fields[nameKey];
                 var groupItem;
                 
                 if (!data) return;
@@ -51,6 +54,18 @@ var getOpenGraph = function(options, callback) {
                     }
 
                     groupItem.setProp(data.fieldName, value);
+                }
+            });
+
+            links.each(function(idx) {
+                var key = $(this).attr('rel');
+                var value = $(this).attr('href');
+                var data = linkFields[key];
+
+                if (!data) return;
+
+                if (!data.group) {
+                    openGraph[data.fieldName] = value;
                 }
             });
 
