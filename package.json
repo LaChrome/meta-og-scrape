@@ -1,12 +1,12 @@
 {
-  "name": "opengraphjs",
-  "description": "Scrape open graph tags from the head of document as a JavaScript object (JSON)",
-  "version": "1.1.0",
+  "name": "meta-og-scrape",
+  "description": "Scrape meta, link & open graph tags from the head of document as a JavaScript object (JSON)",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "index.js",
   "author": {
-    "name": "senorcris",
-    "url": "https://github.com/senorcris"
+    "name": "LaChrome",
+    "url": "https://github.com/LaChrome/meta-og-scrape"
   },
   "scripts": {
     "test": "mocha tests/*-test.js",
@@ -26,8 +26,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/senorcris/opengraphjs.git",
-    "web": "http://github.com/senorcris/opengraphjs"
+    "url": "http://github.com/LaChrome/meta-og-scrape.git",
+    "web": "http://github.com/LaChrome/meta-og-scrape"
   },
   "keywords": [
     "open graph",

@@ -1,6 +1,6 @@
-# OpenGraphJS
+# meta-og-scrape
 
-OpenGraphJS builds a JSON object from a web page which follows the [Open Graph Protocol](http://ogp.me). The JavaScript object returned by this library contains important metadata such as the description, image, and title.
+meta-og-scrape, (built from OpenGraphJS) builds a JSON object from a web page which follows the [Open Graph Protocol](http://ogp.me). The JavaScript object returned by this library contains important metadata such as the description, image, and title.
 
 [![Code Climate](https://codeclimate.com/github/senorcris/opengraphjs/badges/gpa.svg)](https://codeclimate.com/github/senorcris/opengraphjs)
 [![Build Status](https://travis-ci.org/senorcris/opengraphjs.svg)](https://travis-ci.org/senorcris/opengraphjs)
@@ -10,7 +10,7 @@ OpenGraphJS builds a JSON object from a web page which follows the [Open Graph P
 
 ### Installation
 ```
-npm install opengraphjs
+npm install meta-og-scrape
 ```
 
 ### Usage
@@ -23,9 +23,9 @@ npm install opengraphjs
 
 ```js
 // Include it
-var ogjs = require('opengraphjs');
+var ogjs = require('meta-og-scrape');
 // Pass in a URL
-ogjs({ url: 'http://senorcris.com' })
+ogjs({ url: 'http://animateme.app' })
   .then(function (data) {
     console.log(data); // some share data parsed from metatags..
   }, function (err) {
@@ -36,9 +36,9 @@ ogjs({ url: 'http://senorcris.com' })
 #### Callbacks
 ```js
 // Include it
-var ogjs = require('opengraphjs');
+var ogjs = require('meta-og-scrape');
 // Pass in a URL
-ogjs({ url: 'http://senorcris.com' }, function (err, data) {
+ogjs({ url: 'http://animateme.app' }, function (err, data) {
     if (err) {
       console.log('It seems that we have fumbled with an error', err);
       return;
@@ -137,4 +137,5 @@ ogjs({ url: 'http://senorcris.com' }, function (err, data) {
 </table>
 
 ### Credits and Acknowledgements
+- Modified fork by [OpenGraphJS](https://github.com/senorcris/opengraphjs)
 - Inspired by [openGraphScraper ](https://github.com/jshemas/openGraphScraper)
